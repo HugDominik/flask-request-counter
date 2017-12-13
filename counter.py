@@ -5,11 +5,13 @@ app = Flask(__name__)
 counter = 0
 
 
-@app.route('/request-counter')
+@app.route('/request-counter', methods=['POST', 'GET'])
 def request_counter_simple():
     global counter
     counter += 1
-    return str(counter)
+    return render_template('index.html', data=str(counter))
+
+
 
 
 if __name__ == '__main__':
